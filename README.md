@@ -1,6 +1,6 @@
-# Natural History Museum | Feed The Dino
+# Natural History Museum | Dino Feeder
 
-View the working digital solution at: https://andyrodrigues30.github.io/nhm_feed_the_dino/
+View the working digital solution at: https://andyrodrigues30.github.io/dino_feeder/
 
 This project is a digital solution to a problem that the Natural History Museum have identified: “How to make particular objects accessible to a range of audiences.”
 
