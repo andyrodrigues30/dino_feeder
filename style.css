@@ -1,0 +1,210 @@
+@font-face {
+    font-family: "Bungee Regular";
+    src: url("bungee_regular.ttf");
+}
+
+/* RESETS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+button {
+    outline: none;
+}
+
+body {
+    color: #401f8c;
+    text-align: center;
+    font-family: "Bungee Regular";
+    background: url("./img/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.center {
+    padding: 50px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+main img {
+    margin-bottom: 10px;
+    width: 300px;
+}
+
+#speech {
+    padding: 10px;
+    font-size: 20px;
+}
+
+#foodMenu {
+    background: #ebcffa;
+}
+
+/* The Modal (background) */
+.modal {
+    color: #401f8c;
+    position: fixed;
+    display: none;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    animation: darken 0.3s ease-in-out forwards;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    padding: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ebcffa;
+    border-radius: 10px;
+    animation: appear 0.3s ease-in-out forwards;
+}
+
+.food-list {
+    margin: 30px 0;
+}
+
+.close-modal {
+    padding: 10px 15px;
+    background: #401f8c;
+    color: #ffffff;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    transition: background 0.3s ease-in-out;
+}
+
+.close-modal:focus,
+.close-modal:hover {
+    background: #dd4740;
+    cursor: pointer;
+}
+
+/* food option */
+.food {
+    margin: 0 5px;
+    padding: 25px;
+    position: relative;
+    border-radius: 50%;
+    border: solid white;
+    transition: 0.2s ease-in-out;
+    transition-property: transform, box-shadow;
+}
+
+.food:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+    box-shadow: 0 0 10px white;
+}
+
+.food:hover::before {
+    content: attr(data-content);
+    color: #000000aa;
+    font-family: "Bungee Regular";
+    position: absolute;
+    top: -15%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    animation: appear 0.3s ease-in-out;
+}
+
+#meat {
+    background: #f2dbc2;
+}
+
+#plants {
+    background: #c8f2bd;
+}
+
+#eggs {
+    background: #f7f3c3;
+}
+
+.stats {
+    position: absolute;
+    top: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 150px;
+}
+
+footer {
+    position: relative;
+}
+
+.foodGhost {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: feed 0.75s ease-in-out forwards;
+}
+
+.foodGhost:hover::before {
+    content: "";
+}
+
+/*
+    * == KEYFRAMES ==
+*/
+
+@keyframes feed {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -60%) scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -340%) scale(0.5);
+    }
+    100% {
+        transform: translate(-50%, -360%) scale(0.3);
+        opacity: 0;
+    }
+}
+
+@keyframes darken {
+    0% {
+        background: #00000000;
+    }
+    100% {
+        background: #000000dd;
+    }
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/*
+    * == MEDIA QUERIES ==
+*/
+
+/* IPAD PRO WIDTH */
+@media only screen and (max-width: 1024px) {
+    .modal-content {
+        width: 60%;
+    }
+}
+
+icons8-link {
+    font-weight: lighter;
+}

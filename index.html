@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>NHM - Dinosaur Feeder</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="center">
+            <header>
+                <h1>NHM Dinosaur Feeder</h1>
+            </header>
+            <main>
+                <img src="./img/dino_0.png" id="dinoimg" alt="DINO"/>
+                <p id="speech">I'm hungry, find me some food...</p>
+            </main>
+            <footer>
+                <button class="food foodSelect" id="foodMenu" data-content="FOOD MENU">
+                    <img src="./icons/menu.png">
+                </button>
+            </footer>
+        </div>
+
+        <div class="stats">
+            <div class="meat">
+                <p id="meatCount">0</p>
+                <p>MEAT</p>
+            </div>
+            <div class="plants">
+                <p id="plantsCount">0</p>
+                <p>PLANTS</p>
+            </div>
+            <div class="eggs">
+                <p id="eggsCount">0</p>
+                <p>EGGS</p>
+            </div>
+        </div>
+
+        <div class="modal" id="modalId">
+            <div class="blur"></div>
+            <div class="modal-content">
+                <h2>Dino Food Menu</h2>
+                <div class="food-list">
+                    <button class="food" id="meat" data-content="MEAT">
+                        <img src="./icons/meat.png">
+                    </button>
+                    <button class="food" id="plants" data-content="PLANTS">
+                        <img src="./icons/plant.png">
+                    </button>
+                    <button class="food" id="eggs" data-content="EGGS">
+                        <img src="./icons/egg.png">
+                    </button>
+                </div>
+                <button class="close-modal">CLOSE</button>
+            </div>
+        </div>
+        <footer>
+            <a href="https://icons8.com" id="icons8-link">https://icons8.com</a>
+        </footer>
+        <script src="./main.js"></script>
+    </body>
+</html>
