@@ -1,4 +1,4 @@
-# Natural History Museum | Feed the Dino
+# Natural History Museum | Feed The Dino
 
 View the working digital solution at: https://andyrodrigues30.github.io/nhm_feed_the_dino/
 
