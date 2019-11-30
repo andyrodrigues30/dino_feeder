@@ -38,7 +38,7 @@ foodMenu.addEventListener("click", function() {
 
         dino.src = "./img/dino_0.png"
     }
-
+    
     const clone = currentFood.cloneNode(true);
 
     clone.classList.add("foodGhost");
