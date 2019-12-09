@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web&display=swap');
 @font-face {
     font-family: "Bungee Regular";
     src: url("./fonts/bungee_regular.ttf");
@@ -15,7 +16,9 @@ button {
 }
 
 body {
-    color: #401f8c;
+    /* color: #401f8c; */
+    color: black;
+    -webkit-text-stroke: 1px white;
     text-align: center;
     font-family: "Bungee Regular";
     background: url("./img/background.jpg");
@@ -38,8 +41,15 @@ main img {
 }
 
 #speech {
+    -webkit-text-stroke: 0px white;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: bold;
     padding: 10px;
     font-size: 20px;
+    background-color: rgba(255, 255, 255, 0.466);
+    border-radius: 10px;
+    margin-left: 30%;
+    margin-right: 30%;
 }
 
 #foodMenu {

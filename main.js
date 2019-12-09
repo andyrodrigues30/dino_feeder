@@ -23,7 +23,7 @@ foodMenu.addEventListener("click", function() {
     }
 
     if (this.id === "playAgain") {
-        speech.innerText = "I'm hungry, find me some food...,";
+        speech.innerText = "I'm hungry, find me some food...";
 
         meatCount.innerText = 0
         plantsCount.innerText = 0
@@ -125,7 +125,8 @@ function selectMenu() {
 function checkMeatCounter() {
     if (meatCount.innerText >= 3) {
         speech.innerText = [
-            "It's too late for me... but wait you can help other animals by...",
+            "It's too late for me...",
+            "but wait you can help other animals by...",
             "- Feeding the birds in your garden.",
             "- Helping the bees by planting flowers.",
             "- Saving the fish by reusing plastic bags",
