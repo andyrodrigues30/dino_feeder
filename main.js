@@ -1,4 +1,93 @@
+const data = {
+    "Dinosaurs": [
+        {
+            "type": "Trex",
+            "name": "Tommy",
+            "group": "Carnivoure",
+            "Image": "trex.jpg"
+        },
+        {
+            "type": "Pterodactyl",
+            "name": "Terry",
+            "group": "Carnivoure",
+            "Image": "pterodactyl.jpg"
+        },
+        {
+            "type": "Brachiosaurus",
+            "name": "Barry",
+            "group": "Herbivoure",
+            "Image": "brachiosaurus.jpg"
+        },
+        {
+            "type": "Triceratops",
+            "name": "Tess",
+            "group": "Herbivoure",
+            "Image": "triceratops.jpg"
+        },
+        {
+            "type": "Stegosaurus",
+            "name": "Sophie",
+            "group": "Herbivoure",
+            "Image": "stegosaurus.jpg"
+        }
+    ],
+
+    "Food": {
+        "Carnivoure": ["Ham", "Fish", "Lamb"],
+        "Herbivoure": ["Leaves", "Palm Trees"]
+    },
+
+    "Message": [
+        {
+            "Animal": "Bees",
+            "Image": "",
+            "Main": "Save the bees by planting a flower.",
+            "Why": "Bees need nectar and pollen from flowers. The nectar is used by bees as food and an energy. Without flowers bees wont be able to gain energy and will die. Flowers need bees to survive and bees need flowers to survive and reproduce.",
+            "Action": "Plant a flower and save the bees."
+        },
+        {
+            "Animal": "Birds",
+            "Image": "",
+            "Main": "Help the birds by giving them food.",
+            "Why": "If birds are not fed they will die and since some plants rely on birds to polinate some plants will also die out.",
+            "Action": "Feed the birds."
+        },
+        {
+            "Animal": "Marine Life",
+            "Image": "",
+            "Main": "Save marine life by recycling plastics.",
+            "Why": "When plastic aren't disposed of properly and end up in the oceans, marine animals die by eating or getting caught in plastic.",
+            "Action": "Recycle plastics properly."
+        }
+    ]
+};
+
+const generalMessage = "Us dino's died out due to distruptions in the earth's atmosphere and changes in the climate as it interrupted the our food supply. It's too late for us, but wait... you can prevent another extinction event by protecting your planet."
+
+//* Generate Random Dino
+// const dinoGenerated = data.Dinosaurs[Math.floor(Math.random() * data.Dinosaurs.length)];
+const dinoGenerated = data.Dinosaurs[0];
+
+// console.log(dinoGenerated);//? Remove this later | just for debugging
+const helloMessage = `Hello my name is ${dinoGenerated.name} the ${dinoGenerated.type} and I am a ${dinoGenerated.group}. Please feed me...`;
+
+// Initiate correct food list
+let correctFoodItem = []
+
+// Check for correct food items
+if (dinoGenerated.group == "Carnivoure") {
+    for (item = 0; item < data.Food.Carnivoure.length; item++) {
+        correctFoodItem.push(data.Food.Carnivoure[item]);
+    }
+} else {
+    for (item = 0; item < data.Food.Herbivoure.length; item++) {
+        correctFoodItem.push(data.Food.Herbivoure[item]);
+    }
+}
+
+
 const speech = document.getElementById("speech");
+speech.innerText = helloMessage;
 const dino = document.getElementById("dinoimg")
 
 const modal = document.getElementById("modalId");
@@ -50,23 +139,34 @@ foodMenu.addEventListener("click", function() {
     });
 
     document.querySelector("footer").appendChild(clone);
-    switch (this.id) {
-        case "feedMeat":
-            speech.innerText = "Yum...It tastes sooo good, feed me some more...";
-            meatCount.innerText = parseInt(meatCount.innerText) + 1;
-            selectMenu();
-            return checkMeatCounter()
-        case "feedPlants":
-            speech.innerText = "Ewwww...This tastes horrible, I want something else...";
-            plantsCount.innerText = parseInt(plantsCount.innerText) + 1;
-            return selectMenu();
-        case "feedEggs":
-            speech.innerText = "Ewwww...This tastes horrible, I want something else...";
-            eggsCount.innerText = parseInt(eggsCount.innerText) + 1;
-            return selectMenu();
-        default:
-            break
-    };
+
+    if (correctFoodItem.includes(this.id) == false) {
+        speech.innerText = "Ewwww...This tastes horrible, I want something else...";
+        selectMenu();
+    } else {
+        speech.innerHTML = "Yum...This tastes good, Feed me some more..."
+        meatCount.innerText = parseInt(meatCount.innerText) + 1;
+        selectMenu();
+        return checkMeatCounter();
+    }
+
+    // switch (this.id) {
+    //     case "Ham":
+    //         speech.innerText = helloMessage;
+    //         meatCount.innerText = parseInt(meatCount.innerText) + 1;
+    //         selectMenu();
+    //         return checkMeatCounter()
+    //     case "Leaves":
+    //         speech.innerText = "Ewwww...This tastes horrible, I want something else...";
+    //         plantsCount.innerText = parseInt(plantsCount.innerText) + 1;
+    //!         return selectMenu();
+    //     case "Eggs":
+    //         speech.innerText = "Ewwww...This tastes horrible, I want something else...";
+    //         eggsCount.innerText = parseInt(eggsCount.innerText) + 1;
+    //         return selectMenu();
+    //     default:
+    //         break
+//     };
 });
 
 function updateCurrentFood(id, src, content, background, meatCount) {
@@ -81,7 +181,7 @@ selectMeat.addEventListener("click", () => {
     modal.style.display = "none";
     speech.innerText = "You found Meat, click on it to feed me.";
 
-    currentFood.id = "feedMeat";
+    currentFood.id = "Ham";
     currentFoodIMG.src = "./icons/meat.png"
     currentFood.dataset.content = "FEED MEAT";
     currentFood.style.background = "#f2dbc2";
@@ -92,7 +192,7 @@ selectPlants.addEventListener("click", () => {
     modal.style.display = "none";
     speech.innerText = "You found Plants, click on it to feed me.";
 
-    currentFood.id = "feedPlants";
+    currentFood.id = "Leaves";
     currentFoodIMG.src = "./icons/plant.png"
     currentFood.dataset.content = "FEED PLANTS";
     currentFood.style.background = "#c8f2bd";
@@ -103,7 +203,7 @@ selectEggs.addEventListener("click", () => {
     modal.style.display = "none";
     speech.innerText = "You found Eggs, click on it to feed me.";
 
-    currentFood.id = "feedEggs";
+    currentFood.id = "Eggs";
     currentFoodIMG.src = "./icons/egg.png"
     currentFood.dataset.content = "FEED EGGS";
     currentFood.style.background = "#f7f3c3";
@@ -124,12 +224,14 @@ function selectMenu() {
 
 function checkMeatCounter() {
     if (meatCount.innerText >= 3) {
+        //* Final Output Message
+        const randomSuggenstion = Math.floor(Math.random() * data.Message.length);
         speech.innerText = [
-            "It's too late for me...",
-            "but wait you can help other animals by...",
-            "- Feeding the birds in your garden.",
-            "- Helping the bees by planting flowers.",
-            "- Saving the fish by reusing plastic bags",
+            generalMessage,
+            data.Message[randomSuggenstion].Main,
+            data.Message[randomSuggenstion].Why,
+            `So...${data.Message[randomSuggenstion].Action}`,
+            // "- Saving the fish by reusing plastic bags",
             "Press play to continue..."
         ].join("\n\n");
 
